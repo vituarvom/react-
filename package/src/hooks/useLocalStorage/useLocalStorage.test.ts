@@ -60,7 +60,7 @@ describe("useLocalStorage Hook", () => {
     expect(result.current[0]).toBe("defaultValue");
   });
 
-  it("should clear all localStorage values", () => {
+  it("should remove key and reset to default value", () => {
     const { result } = renderHook(() =>
       useLocalStorage("testKey", "defaultValue")
     );
