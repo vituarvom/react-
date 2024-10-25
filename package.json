@@ -9,5 +9,8 @@
   "workspaces": [
     "package/*",
     "smart-app/*"
-  ]
+  ],
+  "scripts": {
+    "setup": "cd package && yarn install && yarn link && cd .. && cd smart-app && yarn link react-smart-utils && yarn install"
+  }
 }

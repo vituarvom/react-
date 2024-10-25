@@ -1,0 +1,58 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import RSUTabs, { ExampleCodeBlocks } from '../../src/components/Tabs/Tabs.tsx';
+
+## useToggle
+
+The `useToggle` hook is a custom React hook that allows you to manage a boolean state with an easy-to-use toggle functionality. This hook is especially useful for managing the visibility of components, switch states, and any other binary conditions.
+
+## Installation
+
+Make sure to have the React Utils Library installed:
+
+```mdx-code-block
+  <RSUTabs />
+```
+
+<ExampleCodeBlocks 
+  tsCode={
+    `
+    import React from "react";
+    import { useToggle } from "react-smart-utils";
+
+    const ToggleComponent: React.FC = () => {
+      const [isToggled, toggle] = useToggle();
+
+      return (
+        <div>
+          <h1>{isToggled ? "On" : "Off"}</h1>
+          <button onClick={toggle}>Toggle</button>
+        </div>
+      );
+    };
+
+    export default ToggleComponent;
+    `
+
+}
+
+jsCode={`
+import React from "react";
+import { useToggle } from "react-smart-utils";
+
+    const ToggleComponent = () => {
+      const [isToggled, toggle] = useToggle();
+
+      return (
+        <div>
+          <h1>{isToggled ? "On" : "Off"}</h1>
+          <button onClick={toggle}>Toggle</button>
+        </div>
+      );
+    };
+
+    export default ToggleComponent;`}
+
+api={`const [value, toggleValue] = useToggle(initialState?: boolean);
+`}
+/>
