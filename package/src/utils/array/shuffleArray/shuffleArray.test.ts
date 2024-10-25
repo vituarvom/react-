@@ -14,11 +14,6 @@ describe('shuffleArray', () => {
         }
         expect(shufflesCount / iterations).toBeGreaterThanOrEqual(0.98);
     });
-    it('should handle edge cases correctly', () => {
-
-        expect(shuffleArray([])).toEqual([]);
-        expect(shuffleArray([1])).toEqual([1]);
-    });
 
     it('should work with arrays of different data types', () => {
         const stringArr = ['a', 'b', 'c', 'd', 'e'];
@@ -33,7 +28,7 @@ describe('shuffleArray', () => {
 
         expect(shuffledObjectArr).not.toEqual(objectArr);
         expect(shuffledObjectArr.length).toBe(objectArr.length);
-        expect(shuffledObjectArr.map(obj => obj.id).sort()).toEqual(objectArr.map(obj => obj.id).sort());
+        expect(new Set(shuffledObjectArr)).toEqual(new Set(objectArr));
     })
 
     it('should return an empty array if input is an empty array', () => {
