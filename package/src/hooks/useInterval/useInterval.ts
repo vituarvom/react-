@@ -2,22 +2,28 @@ import { useEffect, useRef } from "react";
 
 export function useInterval(callback: () => void, delay: number | null) {
   const savedCallback = useRef(callback);
+  const intervalId = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     savedCallback.current = callback;
   }, [callback]);
 
-  useEffect(() => {
-    if (delay === null) {
-      return;
+  const clear = () => {
+    if (intervalId.current) {
+      clearInterval(intervalId.current);
+      intervalId.current = null;
     }
+  };
 
-    const id = setInterval(() => {
-      savedCallback.current();
-    }, delay);
+  const start = () => {
+    if (delay === null) return;
+    clear();
+    intervalId.current = setInterval(() => savedCallback.current(), delay);
+  };
 
-    return () => {
-      clearInterval(id);
-    };
+  useEffect(() => {
+    return clear;
   }, [delay]);
+
+  return { start, clear };
 }
