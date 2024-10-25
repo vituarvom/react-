@@ -1,4 +1,4 @@
-import { useClipboard } from './UseClipboard';
+import { useClipboard } from 'react-smart-utils';
 
 const UseClipboard = () => {
     const { isCopied, copy, copiedText } = useClipboard();
