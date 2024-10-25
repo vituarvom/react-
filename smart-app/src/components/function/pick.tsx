@@ -1,6 +1,7 @@
+import React from 'react';
 import { pick } from "react-smart-utils";
 
-export const Pick = () =>{
+export const Pick = () => {
     const obj = {
         user:{
             name:'Ram',
