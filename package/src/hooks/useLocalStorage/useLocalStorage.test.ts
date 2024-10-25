@@ -60,25 +60,31 @@ describe("useLocalStorage Hook", () => {
     expect(result.current[0]).toBe("defaultValue");
   });
 
-  it("should clear all localStorage values", () => {
-    const { result } = renderHook(() => useLocalStorage("testKey", "defaultValue"));
-
+  it("should remove key and reset to default value", () => {
+    const { result } = renderHook(() =>
+      useLocalStorage("testKey", "defaultValue")
+    );
+  
+    // Set a new value in localStorage
     act(() => {
       result.current[1]("newValue");
     });
-
+  
     // Fast-forward timers to apply the first setValue
     jest.runAllTimers();
-
-    // Now clear all localStorage values
+  
+    // Clear the key from localStorage
     act(() => {
-      result.current[3](); // clearAll
+      result.current[2]("testKey"); // Calling removeKey
     });
-
-    // Fast-forward timers after clearAll
+  
+    // Fast-forward timers after clearing the key
     jest.runAllTimers();
-
-    expect(localStorage.getItem("testKey")).toBeNull();
-    expect(result.current[0]).toBe("defaultValue");
+  
+    // Check if the localStorage key is removed
+    expect(localStorage.getItem("testKey")).toBeNull(); // Assert that the key is cleared
+  
+    // Check if the state is reset to the initial value
+    expect(result.current[0]).toBe("defaultValue"); // The value should revert to the initial/default value
   });
-});
+})  
