@@ -13,10 +13,13 @@ describe('shuffleArray', () => {
             }
         }
         expect(shufflesCount / iterations).toBeGreaterThanOrEqual(0.98);
+    });
+    it('should handle edge cases correctly', () => {
 
         expect(shuffleArray([])).toEqual([]);
         expect(shuffleArray([1])).toEqual([1]);
     });
+
     it('should work with arrays of different data types', () => {
         const stringArr = ['a', 'b', 'c', 'd', 'e'];
         const shuffledStringArr = shuffleArray(stringArr);
@@ -47,7 +50,7 @@ describe('shuffleArray', () => {
 
         expect(arr).toEqual(arrCopy);
     });
-    function arraysEqual(a: number[], b: number[]): boolean {
+    function arraysEqual<T>(a: T[], b: T[]): boolean {
         return a.length === b.length && a.every((value, index) => value === b[index]);
     }
 
