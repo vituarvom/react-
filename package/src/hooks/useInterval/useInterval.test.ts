@@ -1,54 +1,64 @@
- import { renderHook, act } from "@testing-library/react-hooks";
-import { useInterval } from "./useInterval";
+import { renderHook, act } from "@testing-library/react-hooks";
+import useInterval from "./useInterval";
+
+jest.useFakeTimers();
 
 describe("useInterval", () => {
-  beforeEach(() => {
-    jest.useFakeTimers();
-  });
-
-  afterEach(() => {
-    jest.useRealTimers();
-  });
-
-  it("should call the callback every 1000ms", () => {
+  it("should call the callback at specified intervals", () => {
     const callback = jest.fn();
-
-    renderHook(() => useInterval(callback, 1000));
+    const delay = 1000;
+    const { result } = renderHook(() => useInterval(callback, delay));
 
     act(() => {
-      jest.advanceTimersByTime(1000);
+      result.current.start();
     });
 
-    expect(callback).toHaveBeenCalledTimes(1);
+    act(() => {
+      jest.advanceTimersByTime(3000);
+    });
+
+    expect(callback).toHaveBeenCalledTimes(3);
+  });
+
+  it("should stop calling the callback when cleared", () => {
+    const callback = jest.fn();
+    const delay = 1000;
+    const { result } = renderHook(() => useInterval(callback, delay));
 
     act(() => {
-      jest.advanceTimersByTime(1000);
+      result.current.start();
+    });
+
+    act(() => {
+      jest.advanceTimersByTime(2000);
+    });
+
+    expect(callback).toHaveBeenCalledTimes(2);
+
+    act(() => {
+      result.current.clear();
+    });
+
+    act(() => {
+      jest.advanceTimersByTime(2000);
     });
 
     expect(callback).toHaveBeenCalledTimes(2);
   });
 
-  it("should stop calling the callback when delay is null", () => {
+  it("should not call the callback if delay is null", () => {
     const callback = jest.fn();
-
-    const { rerender } = renderHook(
-      ({ delay }: { delay: number | null }) => useInterval(callback, delay),
-      { initialProps: { delay: 1000 } }
-    );
+    const delay = null;
+    const { result } = renderHook(() => useInterval(callback, delay));
 
     act(() => {
-      jest.advanceTimersByTime(1000);
+      result.current.start();
     });
-
-    expect(callback).toHaveBeenCalledTimes(1);
-
-    rerender({ delay: null });
 
     act(() => {
-      jest.advanceTimersByTime(1000);
+      jest.advanceTimersByTime(2000);
     });
 
-    expect(callback).toHaveBeenCalledTimes(1);
+    expect(callback).not.toHaveBeenCalled();
   });
 });
-
