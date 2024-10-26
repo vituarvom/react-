@@ -1,0 +1,76 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import RSUTabs, { ExampleCodeBlocks } from '../../src/components/Tabs/Tabs.tsx';
+
+## usePrevious
+
+The `usePrevious` hook stores and retrieves the previous value of a given variable in a React functional component. This can be helpful for comparing changes between the current and previous values of state or props.
+
+## Installation
+
+Make sure to have the React Utils Library installed:
+
+```mdx-code-block
+  <RSUTabs />
+```
+
+<ExampleCodeBlocks 
+  tsCode={
+    `
+import { useState, useEffect } from "react";
+import { usePrevious } from "react-smart-utils";
+import { SectionWrapper } from "../common/section-wrapper";
+
+const UsePrevious: React.FC = () => {
+  const [count, setCount] = useState<number>(0);
+  const prevCount = usePrevious(count); // Track the previous value of count
+
+  useEffect(() => {
+    console.log(\`Previous count: \${prevCount}, Current count: \${count}\`);
+  }, [count, prevCount]);
+
+  return (
+    <SectionWrapper>
+      <p>Current count: {count}</p>
+      <p>Previous count: {prevCount}</p>
+      <button onClick={() => setCount(count + 1)}>Increment</button>
+    </SectionWrapper>
+  );
+}
+
+export default UsePrevious;
+    `
+
+}
+
+jsCode={`
+import { useState, useEffect } from "react";
+import { usePrevious } from "react-smart-utils";
+import { SectionWrapper } from "../common/section-wrapper";
+
+
+const UsePrevious = () => {
+  const [count, setCount] = useState(0);
+  const prevCount = usePrevious(count); // Track the previous value of count
+
+  useEffect(() => {
+    console.log(\`Previous count: \${prevCount}, Current count: \${count}\`);
+  }, [count, prevCount]);
+
+  return (
+    <SectionWrapper>
+      <p>Current count: {count}</p>
+      <p>Previous count: {prevCount}</p>
+      <button onClick={() => setCount(count + 1)}>Increment</button>
+    </SectionWrapper>
+  );
+};
+
+export default UsePrevious;
+    
+    `
+    }
+
+api={`const prevValue = usePrevious(value: any);
+`}
+/>
