@@ -46,6 +46,7 @@ export function useInterval(
       return clear;
     }else{
       clear();
+      return undefined;
     }
     
   }, [delay, start, clear]);
