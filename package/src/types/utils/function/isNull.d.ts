@@ -7,6 +7,5 @@
  * @returns The function `isNull` returns a boolean value indicating whether the input `value` is
  * `null` or not.
  */
-export function isNull(value: unknown): boolean {
-  return value === null || Object.is(value, null);
-}
+
+declare function isNull(value: unknown): boolean;

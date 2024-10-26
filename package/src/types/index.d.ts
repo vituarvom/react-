@@ -15,4 +15,5 @@ declare module "utils/function" {
   export * from "./utils/function/sample";
   export * from "./utils/function/throttle";
   export * from "./utils/function/uniqueArray";
+  export * from "./utils/function/isNull";
 }
