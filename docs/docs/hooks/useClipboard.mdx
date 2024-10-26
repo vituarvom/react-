@@ -18,7 +18,7 @@ mdx-code-block
     `
     import { useClipboard } from 'react-smart-utils';
     
-    const ClipboardComponent = () => {
+    const ClipboardComponent: React.FC = () => {
         const { isCopied, copy, copiedText } = useClipboard();
         
         const handleCopy = () => {
