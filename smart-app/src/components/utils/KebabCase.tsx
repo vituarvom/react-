@@ -13,5 +13,3 @@ const KebabCase = () => {
 };
 
 export default KebabCase;
-`}
-  
