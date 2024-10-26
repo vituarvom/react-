@@ -1,0 +1,59 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import RSUTabs, { ExampleCodeBlocks } from '../../src/components/Tabs/Tabs.tsx';
+
+## useNetwork
+
+The `useNetwork` hook is a custom React hook that allows you to detect and handle changes in the network status of a user's device. It provides information about the current connection type and status, making it ideal for handling online/offline functionality in your application.
+
+## Installation
+
+Make sure to have the React Utils Library installed:
+
+<RSUTabs />
+
+<ExampleCodeBlocks 
+  tsCode={`
+    import React from 'react';
+    import { useNetwork } from './path/to/useNetwork';
+
+    const UseNetwork: React.FC = () => {
+        const { isOnline, networkName, networkSpeed, connectionType } = useNetwork();
+
+        return (
+            <div>
+                <h2>Network Status</h2>
+                <p>Online: {isOnline ? 'Yes' : 'No'}</p>
+                <p>Network Name: {networkName || 'N/A'}</p>
+                <p>Network Speed: {networkSpeed ? \`\${networkSpeed} Mbps\` : 'Unknown'}</p>
+                <p>Connection Type: {connectionType || 'Unknown'}</p>
+            </div>
+        );
+    };
+
+    export default UseNetwork;
+  `}
+  jsCode={`
+    import React from 'react';
+    import { useNetwork } from './path/to/useNetwork';
+
+    const UseNetwork = () => {
+        const { isOnline, networkName, networkSpeed, connectionType } = useNetwork();
+
+        return (
+            <div>
+                <h2>Network Status</h2>
+                <p><strong>Online:</strong> {isOnline ? 'Yes' : 'No'}</p>
+                <p><strong>Network Name:</strong> {networkName || 'N/A'}</p>
+                <p><strong>Network Speed:</strong> {networkSpeed ? \`\${networkSpeed} Mbps\` : 'Unknown'}</p>
+                <p><strong>Connection Type:</strong> {connectionType || 'Unknown'}</p>
+            </div>
+        );
+    };
+
+    export default UseNetwork;
+  `}
+  api={`
+    const { isOnline, networkName, networkSpeed, connectionType } = useNetwork();
+  `}
+/>
