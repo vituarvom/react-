@@ -62,4 +62,54 @@ describe("useInterval", () => {
 
     expect(callback).not.toHaveBeenCalled();
   });
+
+  it("should handle delay changes during execution", () => {
+    const callback = jest.fn();
+    const { result, rerender } = renderHook(
+      ({ delay }) => useInterval(callback, delay),
+      { initialProps: { delay: 1000 } }
+    );
+  
+    act(() => {
+      result.current.start();
+      jest.advanceTimersByTime(1000);
+    });
+    expect(callback).toHaveBeenCalledTimes(1);
+  
+    rerender({ delay: 500 });
+    act(() => {
+      jest.advanceTimersByTime(500);
+    });
+    expect(callback).toHaveBeenCalledTimes(2);
+  });
+  
+  it("should clean up interval on unmount", () => {
+    const callback = jest.fn();
+    const { result, unmount } = renderHook(() => useInterval(callback, 1000));
+  
+    act(() => {
+      result.current.start();
+    });
+  
+    unmount();
+    act(() => {
+      jest.advanceTimersByTime(1000);
+    });
+    expect(callback).not.toHaveBeenCalled();
+  });
+  
+  it("should handle multiple start calls gracefully", () => {
+    const callback = jest.fn();
+    const { result } = renderHook(() => useInterval(callback, 1000));
+  
+    act(() => {
+      result.current.start();
+      result.current.start(); // Second call
+    });
+  
+    act(() => {
+      jest.advanceTimersByTime(1000);
+    });
+    expect(callback).toHaveBeenCalledTimes(1);
+  });
 });

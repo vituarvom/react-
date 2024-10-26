@@ -18,10 +18,16 @@ export function useInterval(
   }, [callback]);
 
   const start = useCallback(() => {
+    clear();
     if (delay !== null) {
       intervalId.current = setInterval(() => {
         if (savedCallback.current) {
-          savedCallback.current();
+          try{
+            savedCallback.current();
+          }catch(error){
+            console.error('error in internal callback:',error);
+          }
+          
         }
       }, delay);
     }
@@ -35,8 +41,14 @@ export function useInterval(
   }, []);
 
   useEffect(() => {
-    return clear;
-  }, [clear]);
+    if (delay !==null){
+      start();
+      return clear;
+    }else{
+      clear();
+    }
+    
+  }, [delay, start, clear]);
 
   return { start, clear };
 }
