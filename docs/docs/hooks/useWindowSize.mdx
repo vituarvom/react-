@@ -1,0 +1,60 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import RSUTabs, { ExampleCodeBlocks } from '../../src/components/Tabs/Tabs.tsx';
+
+## useWindowSize
+
+The useWindowSize hook is a custom React hook that provides the current width and height of the window. This hook is helpful for creating responsive components that adapt based on the viewport size.
+
+## Installation
+
+Make sure to have the React Utils Library installed:
+
+mdx-code-block
+  <RSUTabs />
+
+<ExampleCodeBlocks 
+  tsCode={
+    
+    import React from "react";
+    import { useWindowSize } from "react-smart-utils";
+
+    const WindowSizeComponent: React.FC = () => {
+      const { width, height } = useWindowSize();
+
+      return (
+        <div>
+          <h1>Window Size</h1>
+          <p>Width: {width}px</p>
+          <p>Height: {height}px</p>
+        </div>
+      );
+    };
+
+    export default WindowSizeComponent;
+    
+  }
+
+  jsCode={
+    import React from "react";
+    import { useWindowSize } from "react-smart-utils";
+
+    const WindowSizeComponent = () => {
+      const { width, height } = useWindowSize();
+
+      return (
+        <div>
+          <h1>Window Size</h1>
+          <p>Width: {width}px</p>
+          <p>Height: {height}px</p>
+        </div>
+      );
+    };
+
+    export default WindowSizeComponent;
+  }
+
+  api={
+    const { width, height } = useWindowSize();
+  }
+/>
