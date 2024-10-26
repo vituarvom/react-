@@ -1,0 +1,65 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import RSUTabs, { ExampleCodeBlocks } from '../../src/components/Tabs/Tabs.tsx';
+
+## useClipboard
+
+The useClipboard hook is a custom React hook that provides an easy way to copy text to the clipboard. This hook enhances user experience by simplifying clipboard operations and handling success and error states effectively.
+
+## Installation
+
+Make sure to have the React Utils Library installed:
+
+mdx-code-block
+  <RSUTabs />
+
+<ExampleCodeBlocks 
+  tsCode={
+    `
+    import { useClipboard } from 'react-smart-utils';
+    
+    const ClipboardComponent = () => {
+        const { isCopied, copy, copiedText } = useClipboard();
+        
+        const handleCopy = () => {
+        copy("Hello");
+        };
+        
+        return (
+        <div>
+            <button onClick={handleCopy}>
+                {isCopied ? 'Copied!' : 'Copy to clipboard'}
+            </button>
+            {isCopied && <p>Copied: {copiedText}</p>}
+        </div>
+        );
+    };
+
+    export default ClipboardComponent;
+    `
+    }
+
+
+jsCode={`
+    import { useClipboard } from 'react-smart-utils';
+
+    const ClipboardComponent = () => {
+        const { isCopied, copy, copiedText } = useClipboard();
+
+        const handleCopy = () => {
+            copy("Hello");
+        };
+
+        return (
+            <div>
+                <button onClick={handleCopy}>
+                    {isCopied ? 'Copied!' : 'Copy to clipboard'}
+                </button>
+                {isCopied && <p>Copied: {copiedText}</p>}
+            </div>
+        );
+    };
+
+    export default ClipboardComponent;
+`}
+/>
