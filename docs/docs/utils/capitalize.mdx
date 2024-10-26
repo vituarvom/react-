@@ -1,0 +1,55 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import RSUTabs, { ExampleCodeBlocks } from '../../src/components/Tabs/Tabs.tsx';
+
+## capitalize
+
+The `capitalize` function is a utility function that converts the first character of a given string to uppercase, leaving the rest of the string unchanged. This function is useful for formatting text in titles, names, and standardizing user input formats.
+
+## Installation
+
+Make sure to have the `string-smart-utils` library installed:
+
+```bash
+npm install string-smart-utils
+
+  <RSUTabs />
+
+  tsCode={
+    import React from "react";
+    import { toLower } from "string-smart-utils";
+  
+const Capitalize: React.FC = () => {
+  const originalText = "hello, world!";
+  const capitalizedText = capitalize(originalText);
+
+  return (
+    <div>
+      <h1>Original: {originalText}</h1>
+      <h1>Capitalized: {capitalizedText}</h1>
+    </div>
+  );
+};
+
+export default Capitalize;
+  }
+
+jsCode={
+    import React from "react";
+    import { toLower } from "string-smart-utils";
+
+const Capitalize = () => {
+  const originalText = "hello, world!";
+  const capitalizedText = capitalize(originalText);
+
+  return (
+    <div>
+      <h1>Original: {originalText}</h1>
+      <h1>Capitalized: {capitalizedText}</h1>
+    </div>
+  );
+};
+
+export default capitalize;
+}
+api={ const result = capitalize(inputString: string); `} />
