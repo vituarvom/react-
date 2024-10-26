@@ -3,7 +3,7 @@ import { SectionWrapper } from "./components/common/section-wrapper";
 import UseCountDown from "./components/hooks/UseCountdown";
 import UseLocalStorage from "./components/hooks/UseLocalStorage";
 import UsePrevious from "./components/hooks/UsePrevious";
-
+import UseWindowSize from "./components/hooks/useWindowSize";
 function App() {
   const rsu = [
     {
@@ -21,7 +21,10 @@ function App() {
           title: "UseLocalStorage",
           node: <UseLocalStorage />,
         },
-        
+        {
+          title: "UseWindowSize",
+          node: <UseWindowSize/>
+        }
       ],
     },
     {
