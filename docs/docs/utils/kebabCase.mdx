@@ -1,0 +1,60 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import RSUTabs, { ExampleCodeBlocks } from '../../src/components/Tabs/Tabs.tsx';
+
+## kebabCase
+
+The `kebabCase` function is a utility that converts a given string into kebab-case format. This is particularly useful for converting text to URL-friendly formats, CSS class names, or standardized naming conventions in your application.
+
+## Installation
+
+Make sure to have the React Utils Library installed:
+
+```mdx-code-block
+  <RSUTabs />
+
+<ExampleCodeBlocks 
+  tsCode={
+    `
+    import { kebabCase } from "react-smart-utils";
+
+    const KebabCaseComponent: React.FC = () => {
+        const text = "Hello World";
+        const kebabText = kebabCase(text); // Output: "hello-world"
+
+        return (
+            <div>
+            <p>Original Text: {text}</p>
+            <p>Kebab-Case Text: {kebabText}</p>
+        </div>
+        );
+    };
+
+    export default KebabCaseComponent;
+    `
+}
+
+jsCode={`
+    import { kebabCase } from "react-smart-utils";
+
+    const KebabCaseComponent = () => {
+        const text = "Hello World";
+        const kebabText = kebabCase(text); // Output: "hello-world"
+
+        return (
+            <div>
+            <p>Original Text: {text}</p>
+            <p>Kebab-Case Text: {kebabText}</p>
+        </div>
+        );
+    };
+
+    export default KebabCaseComponent;
+`}
+
+api={
+    `
+    const result = kebabCase(text: string): string;
+    `   
+}
+/>
