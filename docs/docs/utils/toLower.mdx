@@ -1,0 +1,59 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import RSUTabs, { ExampleCodeBlocks } from '../../src/components/Tabs/Tabs.tsx';
+
+## toLower
+
+The toLower function is a utility function that converts a given string to lowercase. This function is especially useful for handling case-insensitive comparisons, formatting user inputs, or standardizing text before saving it to a database.
+
+## Installation
+
+Make sure to have the String Utils Library installed:
+
+mdx-code-block
+  <RSUTabs />
+
+<ExampleCodeBlocks 
+  tsCode={
+    
+    import React from "react";
+    import { toLower } from "string-smart-utils";
+
+    const LowerCaseComponent: React.FC = () => {
+      const originalText = "Hello, World!";
+      const lowerText = toLower(originalText);
+
+      return (
+        <div>
+          <h1>Original: {originalText}</h1>
+          <h1>Lowercase: {lowerText}</h1>
+        </div>
+      );
+    };
+
+    export default LowerCaseComponent;
+    
+
+}
+
+jsCode={
+import React from "react";
+import { toLower } from "string-smart-utils";
+
+    const LowerCaseComponent = () => {
+      const originalText = "Hello, World!";
+      const lowerText = toLower(originalText);
+
+      return (
+        <div>
+          <h1>Original: {originalText}</h1>
+          <h1>Lowercase: {lowerText}</h1>
+        </div>
+      );
+    };
+
+    export default LowerCaseComponent;}
+
+api={const result = toLower(inputString: string);
+}
+/>
