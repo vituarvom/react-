@@ -1,51 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 import { formatTime } from "../../services/common-services";
+import type { CountdownControls, UseCountdownOptions } from "hooks";
 
-type FormatOptions =
-  | "hh:mm"
-  | "hh:mm:ss"
-  | "mm:ss"
-  | "ss"
-  | ((timeInSeconds: number) => string);
-
-interface UseCountdownOptions {
-  interval?: number;
-  onTick?: () => void;
-  onComplete?: () => void;
-  format?: FormatOptions;
-}
-
-interface CountdownControls {
-  start: () => void;
-  pause: () => void;
-  resume: () => void;
-  reset: () => void;
-  increaseTime: (seconds: number) => void;
-  decreaseTime: (seconds: number) => void;
-}
-
-/**
- * useCountdown hook to create a countdown timer with extra functionalities like pause, reset, and more.
- *
- * @param {number} initialTimeInSeconds - The initial countdown time in seconds.
- * @param {UseCountdownOptions} options - Optional settings like interval, onTick, onComplete, and format.
- *   - `interval` (number): The interval in milliseconds for countdown updates (default is 1000ms).
- *   - `onTick` (function): A callback function invoked on each tick.
- *   - `onComplete` (function): A callback function invoked when the countdown reaches zero.
- *   - `format` (string or function):  Predefined format options ('hh:mm', 'hh:mm:ss', 'mm:ss', 'ss') or a custom formatting function.
- *
- *
- *  @param {CountdownControls} countdownControls - Optional settings like interval, onTick, onComplete, and format.
- *   - `start` (function): To start the timer
- *   - `pause` (function): To pause the timer
- *   - `resume` (function): To resume the timer
- *   - `reset` (function):   To reset the timer
- *   - `increaseTime` ((x: number) => {}):   To increase the timer by x seconds
- *   - `decreaseTime` ((x: number) => {}):   To decrease the timer by x seconds
- *
- *
- * @returns [formattedTime, countdownControls] - Countdown time and control functions.
- */
 export const useCountdown = (
   initialTimeInSeconds: number,
   { interval = 1000, onTick, onComplete, format }: UseCountdownOptions = {}

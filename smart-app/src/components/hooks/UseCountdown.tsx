@@ -1,4 +1,5 @@
 import { useCountdown } from "react-smart-utils";
+import { SectionWrapper } from "../common/section-wrapper";
 
 const UseCountDown = () => {
   const endTime = 100; // 60 seconds countdown
@@ -17,25 +18,24 @@ const UseCountDown = () => {
   });
 
   return (
-    <div>
-      <h1>UseCountDown Hook Usage</h1>
-      {timeLeft !== null ? (
-        <p>
-          Time remaining: {typeof timeLeft} {timeLeft} seconds
-        </p>
-      ) : (
-        <p>Countdown is not active.</p>
-      )}
-      <div className="flex">
-        <button onClick={start}>Start Countdown</button>
+      <div>
+        {timeLeft !== null ? (
+          <p>
+            Time remaining: {typeof timeLeft} {timeLeft} seconds
+          </p>
+        ) : (
+          <p>Countdown is not active.</p>
+        )}
+        <div className="flex">
+          <button onClick={start}>Start Countdown</button>
 
-        <button onClick={pause}>Pause</button>
-        <button onClick={reset}>reset</button>
-        <button onClick={resume}>resume</button>
-        <button onClick={() => increaseTime(60)}>Increase time by 60</button>
-        <button onClick={() => decreaseTime(60)}>Dec time by 60</button>
+          <button onClick={pause}>Pause</button>
+          <button onClick={reset}>reset</button>
+          <button onClick={resume}>resume</button>
+          <button onClick={() => increaseTime(60)}>Increase time by 60</button>
+          <button onClick={() => decreaseTime(60)}>Dec time by 60</button>
+        </div>
       </div>
-    </div>
   );
 };
 
