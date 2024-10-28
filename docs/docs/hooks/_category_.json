@@ -1,0 +1,8 @@
+{
+  "label": "Hooks",
+  "position": 4,
+  "link": {
+    "type": "generated-index",
+    "description": "A comprehensive set of utility functions and components designed to streamline development with React and TypeScript. This library helps improve your workflow with reusable components and functions, customizable and extensible to meet the needs of various React projects."
+  }
+}
