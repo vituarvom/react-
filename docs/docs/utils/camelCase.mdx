@@ -1,0 +1,59 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import RSUTabs, { ExampleCodeBlocks } from '../../src/components/Tabs/Tabs.tsx';
+
+## camelCase
+
+The `camelCase` function is a utility function that converts a given string to camelCase format. This function is particularly useful for standardizing strings for programmatic use, such as formatting user inputs for IDs or variable names, or creating consistent naming conventions.
+
+## Installation
+
+Make sure to have the String Utils Library installed:
+
+mdx-code-block
+  <RSUTabs />
+
+<ExampleCodeBlocks 
+  tsCode={
+    
+    import React from "react";
+    import { camelCase } from "string-smart-utils";
+
+    const CamelCaseComponent: React.FC = () => {
+      const originalText = "Hello world example";
+      const camelText = camelCase(originalText);
+
+      return (
+        <div>
+          <h1>Original: {originalText}</h1>
+          <h1>CamelCase: {camelText}</h1>
+        </div>
+      );
+    };
+
+    export default CamelCaseComponent;
+    
+
+}
+
+jsCode={
+import React from "react";
+import { camelCase } from "string-smart-utils";
+
+    const CamelCaseComponent = () => {
+      const originalText = "Hello world example";
+      const camelText = camelCase(originalText);
+
+      return (
+        <div>
+          <h1>Original: {originalText}</h1>
+          <h1>CamelCase: {camelText}</h1>
+        </div>
+      );
+    };
+
+    export default CamelCaseComponent;}
+
+api={const result = camelCase(inputString: string);
+}
+/>
