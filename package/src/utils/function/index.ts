@@ -6,3 +6,5 @@ export { add } from "./add";
 export { pick } from "./pick/pick";
 export { uniqueArray } from "./uniqueArray/uniqueArray";
 export { sample } from "./sample/sample";
+export { isUndefined } from "./isUndefined/isUndefined";
+export { isNull } from "./isNull/isNull";
