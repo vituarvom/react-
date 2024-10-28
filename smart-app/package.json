@@ -10,6 +10,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@nextui-org/react": "^2.4.8",
+    "framer-motion": "^11.11.10",
+    "nextui-cli": "^0.3.4",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-smart-utils": "file:../package"
@@ -23,6 +26,7 @@
     "eslint-plugin-react-hooks": "^5.1.0-rc.0",
     "eslint-plugin-react-refresh": "^0.4.12",
     "globals": "^15.9.0",
+    "tailwindcss": "^3.4.14",
     "typescript": "^5.5.3",
     "typescript-eslint": "^8.7.0",
     "vite": "^5.4.8"
